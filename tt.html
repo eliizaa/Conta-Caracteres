@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+	<head>
+		<title> TT </title>
+		<meta charset="utf-8" />
+		<script src="./js/jquery.min.js"></script>
+		<script> 
+			$(function(){
+			
+				var TAM_MAX = 140;
+				
+				$("#tam").text(TAM_MAX);
+				$("textarea").keyup(function(){
+					var caractere = $(this).val();
+					
+					 $("#tam").text(TAM_MAX - caractere.length);
+					 
+					 var qtd = TAM_MAX - caractere.length; 
+					if( qtd <= 0){
+						$("#msgAtingiu").text("QUANTIDADE MÁXIMA ATINGIDA!");
+					}
+					var qtdd = caractere.length;
+					
+					palavrasArray = caractere.split(" ");
+					
+					var palavras = palavrasArray.length;
+					
+					var caracterSemEspaco =(caractere.length)-(palavras-1);
+					
+					$("#numEspaco")
+						.text("Caracteres com espaço:" + qtdd);
+					$("#nSEspaco")
+						.text("Caracteres sem espaço:" + caracterSemEspaco);
+					$("#numPalavras")
+						.text("Palavras:" + palavras);
+				});
+
+			})
+		
+		</script>
+	<body>
+		<form>
+			<label for="titulo"> Digite sua Lírica </label>
+			<textarea maxlength="140" id="caixaDeMsg"></textarea>
+			<input type="submit" name="Enviar" id="enviar" />
+		</form>
+		<span id="tam"></span>
+		<p id="msgAtingiu"></p>
+		<p id="numEspaco"> Número de caracteres com espaço</p>
+		<p id="nSEspaco"> Número de caracteres sem espaço </p>
+		<p id="numPalavras"> Número de palavras</p>
+		<p id="palavMaisC"> Palavra mais Comum </p>
+	</body>
+</html>
